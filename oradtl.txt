@@ -35,3 +35,18 @@ alter profile default limit password_life_time unlimited
 select TABLE_NAME,COLUMN_NAME,DATA_TYPE,DATA_LENGTH from user_col_comments   <!--查询数据库某个用户的表及其所有字段以及释义-->
 select r1 as table_name, r2 as column_name, r3 as comments  from (select a.table_name r1, a.column_name r2, a.comments r3   from user_col_comments a)
 
+空表处理
+select 'alter table ' || table_name || ' allocate extent;' from user_tables where num_rows = 0;
+
+-***********************创建表空间***************************
+CREATE SMALLFILE TABLESPACE lzdata DATAFILE 'D:\app\HP\admin\orcl\lzdata.DBF' SIZE 5M AUTOEXTEND ON NEXT 5M MAXSIZE UNLIMITED LOGGING EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO;
+--***********************创建用户***************************
+CREATE USER lzdata IDENTIFIED BY "iotimc.12345" 
+DEFAULT TABLESPACE lzdata TEMPORARY TABLESPACE TEMP;
+--*************分配角色*************************************
+GRANT "DBA" TO lzdata;
+GRANT "CONNECT" TO lzdata;
+GRANT "RESOURCE" TO lzdata;
+ALTER USER lzdata DEFAULT ROLE "DBA","CONNECT","RESOURCE";
+GRANT UNLIMITED TABLESPACE TO lzdata;
+
