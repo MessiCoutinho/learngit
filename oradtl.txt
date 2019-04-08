@@ -1,0 +1,37 @@
+恢复数据库已删的操作   
+      <!--启用行移动功能，闪回修改-->
+    alter table SECTY_SCMP_THEMERELATED enable row movement           
+     <!--查找当前数据库的scn号-->
+    select current_scn from v$database;
+      <!--确定删除的数据是否存在，缩小scn的值--> 
+    select * from SECTY_SCMP_THEMERELATED as of scn 82203301
+     <!--执行恢复语句-->
+    flashback table SECTY_SCMP_THEMERELATED to scn 82203301
+
+对表进行操作   
+      <!--绕过回收站删除表-->
+   drop table XX purge
+      <!--修改表:列的增删改-->
+  alter table XXX add (column1  type1, column2  type2, column3  type3);
+    ALTER TABLE CRIMINAL MODIFY ( "CCXPXQK "  NVARCHAR2(32)) ; 只能修改类型
+ alter table XXX drop column column1; 
+      <!--修改列名-->
+   alter  table XX rename column name to firstname
+      <!--修改列名-->
+   alter  table XX rename  to XXX
+
+数据库用户密码过期（口令失效）
+      <!--查询数据库密码期限，如果不是无限制改为无限制-->
+  select * from  DBA_PROFILES
+          where profile = 'DEFAULT' and resource_name = 'PASSWORD_LIFE_TIME';
+alter profile default limit password_life_time unlimited
+
+查询数据库的所有表
+      <!--查询数据库所有用户的表-->
+  select * from all_tab_comments;    <!--查询数据库某个用户的表-->
+  select * from all_tab_comments where owner='LZDATA';  <!--查询数据库某个用户的表及其所有字段-->
+  select TABLE_NAME,COLUMN_NAME,DATA_TYPE,DATA_LENGTH from all_tab_columns  where owner='LZDATA';  -- owner=’自己的用户名(大写)’;
+或者
+select TABLE_NAME,COLUMN_NAME,DATA_TYPE,DATA_LENGTH from user_col_comments   <!--查询数据库某个用户的表及其所有字段以及释义-->
+select r1 as table_name, r2 as column_name, r3 as comments  from (select a.table_name r1, a.column_name r2, a.comments r3   from user_col_comments a)
+
