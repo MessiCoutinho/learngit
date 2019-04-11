@@ -29,12 +29,19 @@ git diff HEAD -- readme.txt //查看工作区（leangit）与版本库（.git）
 
 git checkout -- readme.txt //让这个文件回到最近一次git commit或git add时的状态
 
-git checkout -b xxx  //创建一个新的分支xxx
+git checkout -b xxx  //创建一个新的分支xxx并切换
+
+git merge xxx  //将分支xxx合并到当前分支
+
+git branch -d xxx  //删除分支分支xxx
 
 cat .git/HEAD  //查看当前分支及路径
 
 git branch  //查看当前分支是哪个
 
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
 
 【配置远程库时遇到的错误】
 提示信息为：$ git push -u origin master
