@@ -29,6 +29,13 @@ git diff HEAD -- readme.txt //查看工作区（leangit）与版本库（.git）
 
 git checkout -- readme.txt //让这个文件回到最近一次git commit或git add时的状态
 
+git checkout -b xxx  //创建一个新的分支xxx
+
+cat .git/HEAD  //查看当前分支及路径
+
+git branch  //查看当前分支是哪个
+
+
 【配置远程库时遇到的错误】
 提示信息为：$ git push -u origin master
 fatal: unable to access 'https://github.com/MessiCoutinho/learngit.git/': error setting certificate verify locations:
@@ -39,3 +46,7 @@ fatal: unable to access 'https://github.com/MessiCoutinho/learngit.git/': error 
 使用git 客户端输入一下命令即可：
 
 $ git config --global http.sslverify "false"
+
+git push  /在commit之后，提交到远程仓库
+
+测试我的第二个分支	
