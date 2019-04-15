@@ -57,3 +57,5 @@ $ git config --global http.sslverify "false"
 git push  /在commit之后，提交到远程仓库
 git log --graph命令可以看到分支合并图
 最肯忘却古人诗：万般皆下品，唯有读书高。
+
+issue101修复成功
