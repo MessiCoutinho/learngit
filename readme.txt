@@ -57,3 +57,4 @@ $ git config --global http.sslverify "false"
 git push  /在commit之后，提交到远程仓库
 
 测试我的第二个分支	
+Creating a new branch is quick & simple.
