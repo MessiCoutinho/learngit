@@ -56,7 +56,7 @@ $ git config --global http.sslverify "false"
 
 git push  /在commit之后，提交到远程仓库
 
-测试我的第二个分支	
-Creating a new branch is quick AND simple.
+git log --graph命令可以看到分支合并图
 
-眺望碧海和蓝天
+测试我的第二个分支	
+在心里面那抹灰就淡一点
