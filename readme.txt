@@ -55,8 +55,5 @@ fatal: unable to access 'https://github.com/MessiCoutinho/learngit.git/': error 
 $ git config --global http.sslverify "false"
 
 git push  /在commit之后，提交到远程仓库
-
 git log --graph命令可以看到分支合并图
-
-测试我的第二个分支	
-在心里面那抹灰就淡一点
+最肯忘却古人诗：万般皆下品，唯有读书高。
